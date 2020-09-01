@@ -1,0 +1,40 @@
+1. build .jar sem criar imagem
+
+docker run -v ~/POCCamelSpringBoot:/poc  maven:slim /bin/bash -c "cd /poc;mvn install"
+
+2. rodar o .jar sem criar imagem
+
+docker run -p 80:8080 -v ~/POCCamelSpringBoot/target:/jar openjdk:8-jdk-alpine java -jar /jar/POCCamelSpringBoot-0.1.jar
+
+3. Dockerfile
+
+4. build multi-stage
+
+docker build -t prillhub/poc:latest .
+
+5. push para o repositório e docker login
+
+docker push prillhub/poc
+
+6. rodar o container
+
+docker run -p 80:8080 prillhub/poc
+
+7. Swarm Cluster
+
+docker swarm init
+docker swarm join-token worker
+
+8. Serviços no swarm
+
+docker service create -p 80:8080 prillhub/poc:latest
+
+9. Cluster pronto do play with docker
+
+10. Scale up e down
+
+11. Servidor caiu
+
+12. Servidor adicionado
+
+13. Scale to 1 e chamada ao serviço em qualquer nó
